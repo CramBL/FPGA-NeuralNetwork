@@ -115,8 +115,7 @@ wire reset;
 
 assign reset = ~s_axi_aresetn|softReset;
 
-localparam IDLE = 'd0,
-           SEND = 'd1;
+localparam IDLE = 'd0, SEND = 'd1;
 wire [`numNeuronLayer1-1:0] o1_valid;
 wire [`numNeuronLayer1*`dataWidth-1:0] x1_out;
 reg [`numNeuronLayer1*`dataWidth-1:0] holdData_1;

@@ -1,22 +1,22 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
+// Company:
+// Engineer:
+//
 // Create Date: 09.04.2019 15:57:43
-// Design Name: 
+// Design Name:
 // Module Name: top_sim
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
+// Project Name:
+// Target Devices:
+// Tool Versions:
+// Description:
+//
+// Dependencies:
+//
 // Revision:
 // Revision 0.01 - File Created
-// Additional Comments: 
-// 
+// Additional Comments:
+//
 //////////////////////////////////////////////////////////////////////////////////
 
 `include "include.v"
@@ -26,7 +26,7 @@
 module top_sim(
 
     );
-    
+
     reg reset;
     reg clock;
     reg [`dataWidth-1:0] in;
@@ -53,20 +53,20 @@ module top_sim(
 
     wire [31:0] numNeurons[31:1];
     wire [31:0] numWeights[31:1];
-    
+
     assign numNeurons[1] = 30;
     assign numNeurons[2] = 30;
     assign numNeurons[3] = 10;
     assign numNeurons[4] = 10;
-    
+
     assign numWeights[1] = 784;
     assign numWeights[2] = 30;
     assign numWeights[3] = 30;
     assign numWeights[4] = 10;
-    
+
     integer right=0;
     integer wrong=0;
-    
+
     zyNet dut(
     .s_axi_aclk(clock),
     .s_axi_aresetn(reset),
@@ -94,8 +94,8 @@ module top_sim(
     .axis_in_data_ready(),
     .intr(intr)
     );
-    
-            
+
+
     initial
     begin
         clock = 1'b0;
@@ -104,23 +104,23 @@ module top_sim(
         s_axi_wvalid = 1'b0;
         s_axi_arvalid = 1'b0;
     end
-        
+
     always
         #5 clock = ~clock;
-    
+
     function [7:0] to_ascii;
       input integer a;
       begin
         to_ascii = a+48;
       end
     endfunction
-    
+
     always @(posedge clock)
     begin
         s_axi_bready <= s_axi_bvalid;
         s_axi_rready <= s_axi_rvalid;
     end
-    
+
     task writeAxi(
     input [31:0] address,
     input [31:0] data
@@ -138,7 +138,7 @@ module top_sim(
         @(posedge clock);
     end
     endtask
-    
+
     task readAxi(
     input [31:0] address
     );
@@ -155,7 +155,7 @@ module top_sim(
         @(posedge clock);
     end
     endtask
-    
+
     task configWeights();
     integer i,j,k,t;
     integer neuronNo_int;
@@ -182,7 +182,7 @@ module top_sim(
                         fileName[i+4] = to_ascii(neuronNo_int%10);
                         neuronNo_int = neuronNo_int/10;
                         i=i+1;
-                    end 
+                    end
                     fileName[6] = "_";
                     fileName[7] = to_ascii(k);
                     fileName[8] = "_";
@@ -197,7 +197,7 @@ module top_sim(
                         fileName[i+4] = to_ascii(neuronNo_int%10);
                         neuronNo_int = neuronNo_int/10;
                         i=i+1;
-                    end 
+                    end
                     fileName[5] = "_";
                     fileName[6] = to_ascii(k);
                     fileName[7] = "_";
@@ -207,12 +207,12 @@ module top_sim(
                 writeAxi(16,j);//Write neuron number
                 for (t=0; t<numWeights[k]; t=t+1) begin
                     writeAxi(0,{15'd0,config_mem[t]});
-                end 
+                end
             end
         end
     end
     endtask
-    
+
     task configBias();
     integer i,j,k,t;
     integer neuronNo_int;
@@ -239,7 +239,7 @@ module top_sim(
                         fileName[i+4] = to_ascii(neuronNo_int%10);
                         neuronNo_int = neuronNo_int/10;
                         i=i+1;
-                    end 
+                    end
                     fileName[6] = "_";
                     fileName[7] = to_ascii(k);
                     fileName[8] = "_";
@@ -254,11 +254,11 @@ module top_sim(
                         fileName[i+4] = to_ascii(neuronNo_int%10);
                         neuronNo_int = neuronNo_int/10;
                         i=i+1;
-                    end 
+                    end
                     fileName[5] = "_";
                     fileName[6] = to_ascii(k);
                     fileName[7] = "_";
-                    fileName[8] = "b";               
+                    fileName[8] = "b";
                 end
                 $readmemb(fileName, bias);
                 writeAxi(16,j);//Write neuron number
@@ -267,8 +267,8 @@ module top_sim(
         end
     end
     endtask
-    
-    
+
+
     task sendData();
     //input [25*7:0] fileName;
     integer t;
@@ -283,13 +283,13 @@ module top_sim(
             in_valid <= 1;
             //@(posedge clock);
             //in_valid <= 0;
-        end 
+        end
         @(posedge clock);
         in_valid <= 0;
         expected = in_mem[t];
     end
     endtask
-   
+
     integer i,j,layerNo=1,k;
     integer start;
     integer testDataCount;
@@ -326,7 +326,7 @@ module top_sim(
                 fileName[i+4] = to_ascii(testDataCount_int%10);
                 testDataCount_int = testDataCount_int/10;
                 i=i+1;
-            end 
+            end
             fileName[8] = "_";
             fileName[9] = "a";
             fileName[10] = "t";

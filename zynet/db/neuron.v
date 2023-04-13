@@ -1,22 +1,22 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
+// Company:
+// Engineer:
+//
 // Create Date: 13.11.2018 17:11:05
-// Design Name: 
+// Design Name:
 // Module Name: perceptron
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
+// Project Name:
+// Target Devices:
+// Tool Versions:
+// Description:
+//
+// Dependencies:
+//
 // Revision:
-// Revision 0.01 - File Created 
+// Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
 //`define DEBUG
 `include "include.v"
@@ -33,25 +33,25 @@ module neuron #(parameter layerNo=0,neuronNo=0,numWeight=784,dataWidth=16,sigmoi
     input [31:0]    config_layer_num,
     input [31:0]    config_neuron_num,
     output[dataWidth-1:0]    out,
-    output reg      outvalid   
+    output reg      outvalid
     );
-    
+
     parameter addressWidth = $clog2(numWeight);
-    
+
     reg         wen;
     wire        ren;
     reg [addressWidth-1:0] w_addr;
     reg [addressWidth:0]   r_addr;//read address has to reach until numWeight hence width is 1 bit more
     reg [dataWidth-1:0]  w_in;
     wire [dataWidth-1:0] w_out;
-    reg [2*dataWidth-1:0]  mul; 
+    reg [2*dataWidth-1:0]  mul;
     reg [2*dataWidth-1:0]  sum;
     reg [2*dataWidth-1:0]  bias;
     reg [31:0]    biasReg[0:0];
     reg         weight_valid;
     reg         mult_valid;
     wire        mux_valid;
-    reg         sigValid; 
+    reg         sigValid;
     wire [2*dataWidth:0] comboAdd;
     wire [2*dataWidth:0] BiasAdd;
     reg  [dataWidth-1:0] myinputd;
@@ -75,12 +75,12 @@ module neuron #(parameter layerNo=0,neuronNo=0,numWeight=784,dataWidth=16,sigmoi
         else
             wen <= 0;
     end
-	
+
     assign mux_valid = mult_valid;
     assign comboAdd = mul + sum;
     assign BiasAdd = bias + sum;
     assign ren = myinputValid;
-    
+
 	`ifdef pretrained
 		initial
 		begin
@@ -99,8 +99,8 @@ module neuron #(parameter layerNo=0,neuronNo=0,numWeight=784,dataWidth=16,sigmoi
 			end
 		end
 	`endif
-    
-    
+
+
     always @(posedge clk)
     begin
         if(rst|outvalid)
@@ -108,13 +108,13 @@ module neuron #(parameter layerNo=0,neuronNo=0,numWeight=784,dataWidth=16,sigmoi
         else if(myinputValid)
             r_addr <= r_addr + 1;
     end
-    
+
     always @(posedge clk)
     begin
         mul  <= $signed(myinputd) * $signed(w_out);
     end
-    
-    
+
+
     always @(posedge clk)
     begin
         if(rst|outvalid)
@@ -132,7 +132,7 @@ module neuron #(parameter layerNo=0,neuronNo=0,numWeight=784,dataWidth=16,sigmoi
                 sum[2*dataWidth-2:0] <= {2*dataWidth-1{1'b0}};
             end
             else
-                sum <= BiasAdd; 
+                sum <= BiasAdd;
         end
         else if(mux_valid)
         begin
@@ -147,10 +147,10 @@ module neuron #(parameter layerNo=0,neuronNo=0,numWeight=784,dataWidth=16,sigmoi
                 sum[2*dataWidth-2:0] <= {2*dataWidth-1{1'b0}};
             end
             else
-                sum <= comboAdd; 
+                sum <= comboAdd;
         end
     end
-    
+
     always @(posedge clk)
     begin
         myinputd <= myinput;
@@ -161,8 +161,8 @@ module neuron #(parameter layerNo=0,neuronNo=0,numWeight=784,dataWidth=16,sigmoi
         muxValid_d <= mux_valid;
         muxValid_f <= !mux_valid & muxValid_d;
     end
-    
-    
+
+
     //Instantiation of Memory for Weights
     Weight_Memory #(.numWeight(numWeight),.neuronNo(neuronNo),.layerNo(layerNo),.addressWidth(addressWidth),.dataWidth(dataWidth),.weightFile(weightFile)) WM(
         .clk(clk),
@@ -173,7 +173,7 @@ module neuron #(parameter layerNo=0,neuronNo=0,numWeight=784,dataWidth=16,sigmoi
         .win(w_in),
         .wout(w_out)
     );
-    
+
 	generate
 		if(actType == "sigmoid")
 		begin:siginst
@@ -184,6 +184,14 @@ module neuron #(parameter layerNo=0,neuronNo=0,numWeight=784,dataWidth=16,sigmoi
 			.out(out)
 		);
 		end
+		else if (actType == "relu-vhdl")
+		begin :ReLU_VHDL_inst
+			ReLU_VHDL #(.dataWidth(dataWidth),.weightIntWidth(weightIntWidth)) s1 (
+			.clk(clk),
+			.x(sum),
+			.y_out(out)
+            );
+        end
 		else
 		begin:ReLUinst
 			ReLU #(.dataWidth(dataWidth),.weightIntWidth(weightIntWidth)) s1 (
