@@ -1,1 +1,7 @@
 /myProject1/*
+zynet/__pycache__/__init__.cpython-36.pyc
+zynet/__pycache__/gen_nn.cpython-36.pyc
+zynet/__pycache__/genWegitsAndBias.cpython-36.pyc
+zynet/__pycache__/utils.cpython-36.pyc
+zynet/__pycache__/xilinxUtils.cpython-36.pyc
+zynet/__pycache__/zynet.cpython-36.pyc
