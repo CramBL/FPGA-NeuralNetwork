@@ -1,0 +1,346 @@
+Copyright 1986-2023 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.2.2 (lin64) Build 3788238 Tue Feb 21 19:59:23 MST 2023
+| Date         : Thu Apr 13 17:36:40 2023
+| Host         : pc014mk running 64-bit CentOS Stream release 8
+| Command      : report_control_sets -verbose -file zyNet_control_sets_placed.rpt
+| Design       : zyNet
+| Device       : xc7z020
+--------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |   268 |
+|    Minimum number of control sets                        |   268 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   323 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |   268 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |    10 |
+| >= 6 to < 8        |    40 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |    32 |
+| >= 12 to < 14      |     1 |
+| >= 14 to < 16      |     0 |
+| >= 16              |   185 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             150 |          114 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |            1469 |          403 |
+| Yes          | No                    | No                     |            1539 |          394 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |            3495 |         1208 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-----------------------+-----------------------------+--------------------------------------------------+------------------+----------------+--------------+
+|      Clock Signal     |        Enable Signal        |                 Set/Reset Signal                 | Slice Load Count | Bel Load Count | Bels / Slice |
++-----------------------+-----------------------------+--------------------------------------------------+------------------+----------------+--------------+
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_3            | alw/controlReg_reg[0]_46[0]                      |                2 |              5 |         2.50 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_3            | alw/controlReg_reg[0]_41                         |                2 |              5 |         2.50 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_3            | alw/controlReg_reg[0]_47                         |                2 |              5 |         2.50 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_3            | alw/controlReg_reg[0]_48                         |                2 |              5 |         2.50 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_3            | alw/controlReg_reg[0]_39[0]                      |                2 |              5 |         2.50 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_3            | alw/controlReg_reg[0]_40[0]                      |                2 |              5 |         2.50 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_3            | alw/controlReg_reg[0]_42[0]                      |                2 |              5 |         2.50 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_3            | alw/controlReg_reg[0]_43[0]                      |                3 |              5 |         1.67 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_3            | alw/controlReg_reg[0]_44[0]                      |                2 |              5 |         2.50 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_3            | alw/controlReg_reg[0]_45[0]                      |                2 |              5 |         2.50 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_2[0]                       |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_24                         |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_18[0]                      |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_17[0]                      |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_13[0]                      |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_12[0]                      |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_11[0]                      |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_0[0]                       |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_10[0]                      |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/SR[0]                                        |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_9                          |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_4                          |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_28                         |                4 |              6 |         1.50 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_27                         |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_22                         |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_19                         |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_16                         |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_15                         |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_14                         |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_1                          |                4 |              6 |         1.50 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_21[0]                      |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_20[0]                      |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_2            | alw/controlReg_reg[0]_38[0]                      |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_2            | alw/controlReg_reg[0]_37[0]                      |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_2            | alw/controlReg_reg[0]_34[0]                      |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_2            | alw/controlReg_reg[0]_32[0]                      |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_2            | alw/controlReg_reg[0]_30[0]                      |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_2            | alw/controlReg_reg[0]_29[0]                      |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_2            | alw/controlReg_reg[0]_36                         |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_2            | alw/controlReg_reg[0]_35                         |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_2            | alw/controlReg_reg[0]_33                         |                4 |              6 |         1.50 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_8[0]                       |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_23[0]                      |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_25[0]                      |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_26[0]                      |                4 |              6 |         1.50 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_3[0]                       |                3 |              6 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_5[0]                       |                4 |              6 |         1.50 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_6[0]                       |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_2            | alw/controlReg_reg[0]_31                         |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG | data_out_valid_1            | alw/controlReg_reg[0]_7[0]                       |                2 |              6 |         3.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l3/n_0/muxValid_f_reg_0                          |                9 |             10 |         1.11 |
+|  s_axi_aclk_IBUF_BUFG |                             | l4/n_0/muxValid_f_reg_0                          |               10 |             10 |         1.00 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_20                              |                5 |             11 |         2.20 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_2                               |                4 |             11 |         2.75 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_19                              |                5 |             11 |         2.20 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_18                              |                4 |             11 |         2.75 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_17                              |                4 |             11 |         2.75 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_16                              |                3 |             11 |         3.67 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_28                              |                5 |             11 |         2.20 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_15                              |                4 |             11 |         2.75 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_14                              |                5 |             11 |         2.20 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_13                              |                5 |             11 |         2.20 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_12                              |                5 |             11 |         2.20 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_11                              |                3 |             11 |         3.67 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_10                              |                5 |             11 |         2.20 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_1                               |                3 |             11 |         3.67 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_0                               |                5 |             11 |         2.20 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_22                              |                4 |             11 |         2.75 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg[0]                              |                3 |             11 |         3.67 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_9                               |                5 |             11 |         2.20 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_8                               |                5 |             11 |         2.20 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_7                               |                4 |             11 |         2.75 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_6                               |                3 |             11 |         3.67 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_5                               |                5 |             11 |         2.20 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_4                               |                4 |             11 |         2.75 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_3                               |                4 |             11 |         2.75 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_27                              |                3 |             11 |         3.67 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_26                              |                4 |             11 |         2.75 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_25                              |                4 |             11 |         2.75 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_24                              |                4 |             11 |         2.75 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_23                              |                3 |             11 |         3.67 |
+|  s_axi_aclk_IBUF_BUFG | axis_in_data_valid_IBUF     | alw/outvalid_reg_21                              |                4 |             11 |         2.75 |
+|  s_axi_aclk_IBUF_BUFG |                             | alw/axi_wready_i_1_n_30                          |                5 |             13 |         2.60 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_13/ReLU_VHDL_inst.s1/y_out[15]_i_1__62_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG | mFind/maxValue[15]_i_1_n_30 |                                                  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG | alw/axi_rd_en_reg_0         | alw/axi_rd_en_reg_1                              |                6 |             16 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | l3/n_0/holdData_3           | alw/state_3_reg_0                                |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/holdData_2           | alw/state_2_reg_rep_0                            |                2 |             16 |         8.00 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/holdData_1           | alw/state_1_reg_1                                |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_9/ReLU_VHDL_inst.s1/y_out[15]_i_1__8_n_30   |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_22/ReLU_VHDL_inst.s1/y_out[15]_i_1__21_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_21/ReLU_VHDL_inst.s1/y_out[15]_i_1__20_n_30 |                5 |             16 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_20/ReLU_VHDL_inst.s1/y_out[15]_i_1__19_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_19/ReLU_VHDL_inst.s1/y_out[15]_i_1__18_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_18/ReLU_VHDL_inst.s1/y_out[15]_i_1__17_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_17/ReLU_VHDL_inst.s1/y_out[15]_i_1__16_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_16/ReLU_VHDL_inst.s1/y_out[15]_i_1__15_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_15/ReLU_VHDL_inst.s1/y_out[15]_i_1__14_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_14/ReLU_VHDL_inst.s1/y_out[15]_i_1__13_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_13/ReLU_VHDL_inst.s1/y_out[15]_i_1__12_n_30 |                6 |             16 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_12/ReLU_VHDL_inst.s1/y_out[15]_i_1__11_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_11/ReLU_VHDL_inst.s1/y_out[15]_i_1__10_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_10/ReLU_VHDL_inst.s1/y_out[15]_i_1__9_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_23/ReLU_VHDL_inst.s1/y_out[15]_i_1__22_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_8/ReLU_VHDL_inst.s1/y_out[15]_i_1__7_n_30   |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_7/ReLU_VHDL_inst.s1/y_out[15]_i_1__6_n_30   |                5 |             16 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_6/ReLU_VHDL_inst.s1/y_out[15]_i_1__5_n_30   |                5 |             16 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_5/ReLU_VHDL_inst.s1/y_out[15]_i_1__4_n_30   |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_4/ReLU_VHDL_inst.s1/y_out[15]_i_1__3_n_30   |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_3/ReLU_VHDL_inst.s1/y_out[15]_i_1__2_n_30   |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_2/ReLU_VHDL_inst.s1/y_out[15]_i_1__1_n_30   |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_1/ReLU_VHDL_inst.s1/y_out[15]_i_1__0_n_30   |                5 |             16 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_0/ReLU_VHDL_inst.s1/y_out[15]_i_1_n_30      |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_9/ReLU_VHDL_inst.s1/y_out[15]_i_1__58_n_30  |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_8/ReLU_VHDL_inst.s1/y_out[15]_i_1__57_n_30  |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_7/ReLU_VHDL_inst.s1/y_out[15]_i_1__56_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_6/ReLU_VHDL_inst.s1/y_out[15]_i_1__55_n_30  |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l4/n_2/ReLU_VHDL_inst.s1/y_out[15]_i_1__41_n_30  |                5 |             16 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_29/ReLU_VHDL_inst.s1/y_out[15]_i_1__28_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l3/n_0/ReLU_VHDL_inst.s1/y_out[15]_i_1__29_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l3/n_1/ReLU_VHDL_inst.s1/y_out[15]_i_1__30_n_30  |                5 |             16 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG |                             | l3/n_2/ReLU_VHDL_inst.s1/y_out[15]_i_1__31_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l3/n_3/ReLU_VHDL_inst.s1/y_out[15]_i_1__32_n_30  |                5 |             16 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG |                             | l3/n_4/ReLU_VHDL_inst.s1/y_out[15]_i_1__33_n_30  |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l3/n_5/ReLU_VHDL_inst.s1/y_out[15]_i_1__34_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l3/n_6/ReLU_VHDL_inst.s1/y_out[15]_i_1__35_n_30  |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l3/n_7/ReLU_VHDL_inst.s1/y_out[15]_i_1__36_n_30  |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l3/n_8/ReLU_VHDL_inst.s1/y_out[15]_i_1__37_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l3/n_9/ReLU_VHDL_inst.s1/y_out[15]_i_1__38_n_30  |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l4/n_0/ReLU_VHDL_inst.s1/y_out[15]_i_1__39_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l4/n_1/ReLU_VHDL_inst.s1/y_out[15]_i_1__40_n_30  |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_10/ReLU_VHDL_inst.s1/y_out[15]_i_1__59_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l4/n_3/ReLU_VHDL_inst.s1/y_out[15]_i_1__42_n_30  |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l4/n_4/ReLU_VHDL_inst.s1/y_out[15]_i_1__43_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l4/n_5/ReLU_VHDL_inst.s1/y_out[15]_i_1__44_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l4/n_6/ReLU_VHDL_inst.s1/y_out[15]_i_1__45_n_30  |                5 |             16 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG |                             | l4/n_7/ReLU_VHDL_inst.s1/y_out[15]_i_1__46_n_30  |                5 |             16 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG |                             | l4/n_8/ReLU_VHDL_inst.s1/y_out[15]_i_1__47_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_28/ReLU_VHDL_inst.s1/y_out[15]_i_1__27_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l4/n_9/ReLU_VHDL_inst.s1/y_out[15]_i_1__48_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_27/ReLU_VHDL_inst.s1/y_out[15]_i_1__26_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_26/ReLU_VHDL_inst.s1/y_out[15]_i_1__25_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_25/ReLU_VHDL_inst.s1/y_out[15]_i_1__24_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_24/ReLU_VHDL_inst.s1/y_out[15]_i_1__23_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_25/ReLU_VHDL_inst.s1/y_out[15]_i_1__74_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_20/ReLU_VHDL_inst.s1/y_out[15]_i_1__69_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_3/ReLU_VHDL_inst.s1/y_out[15]_i_1__52_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_27/ReLU_VHDL_inst.s1/y_out[15]_i_1__76_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_11/ReLU_VHDL_inst.s1/y_out[15]_i_1__60_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_0/ReLU_VHDL_inst.s1/y_out[15]_i_1__49_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_29/ReLU_VHDL_inst.s1/y_out[15]_i_1__78_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_15/ReLU_VHDL_inst.s1/y_out[15]_i_1__64_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_2/ReLU_VHDL_inst.s1/y_out[15]_i_1__51_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_23/ReLU_VHDL_inst.s1/y_out[15]_i_1__72_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_5/ReLU_VHDL_inst.s1/y_out[15]_i_1__54_n_30  |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_16/ReLU_VHDL_inst.s1/y_out[15]_i_1__65_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_21/ReLU_VHDL_inst.s1/y_out[15]_i_1__70_n_30 |                5 |             16 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_4/ReLU_VHDL_inst.s1/y_out[15]_i_1__53_n_30  |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_19/ReLU_VHDL_inst.s1/y_out[15]_i_1__68_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_24/ReLU_VHDL_inst.s1/y_out[15]_i_1__73_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_12/ReLU_VHDL_inst.s1/y_out[15]_i_1__61_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_14/ReLU_VHDL_inst.s1/y_out[15]_i_1__63_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_28/ReLU_VHDL_inst.s1/y_out[15]_i_1__77_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_18/ReLU_VHDL_inst.s1/y_out[15]_i_1__67_n_30 |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_17/ReLU_VHDL_inst.s1/y_out[15]_i_1__66_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_1/ReLU_VHDL_inst.s1/y_out[15]_i_1__50_n_30  |                3 |             16 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_22/ReLU_VHDL_inst.s1/y_out[15]_i_1__71_n_30 |                4 |             16 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_26/ReLU_VHDL_inst.s1/y_out[15]_i_1__75_n_30 |                6 |             16 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG |                             | l2/n_0/muxValid_f_reg_0                          |               27 |             30 |         1.11 |
+|  s_axi_aclk_IBUF_BUFG |                             | l1/n_0/muxValid_f_reg_0                          |               28 |             30 |         1.07 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_26    | alw/outvalid_reg_27                              |               10 |             31 |         3.10 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_13    | alw/outvalid_reg_14                              |               11 |             31 |         2.82 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_12    | alw/outvalid_reg_13                              |                8 |             31 |         3.88 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_10    | alw/outvalid_reg_11                              |                8 |             31 |         3.88 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_1     | alw/outvalid_reg_1                               |               12 |             31 |         2.58 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_0     | alw/outvalid_reg_0                               |               10 |             31 |         3.10 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_28    | alw/controlReg_reg[0]_28                         |               11 |             31 |         2.82 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_6     | alw/outvalid_reg_7                               |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_5     | alw/outvalid_reg_6                               |               12 |             31 |         2.58 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_17    | alw/outvalid_reg_18                              |               10 |             31 |         3.10 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_21    | alw/outvalid_reg_22                              |               10 |             31 |         3.10 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_2     | alw/outvalid_reg_2                               |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_19    | alw/outvalid_reg_20                              |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_18    | alw/outvalid_reg_19                              |               10 |             31 |         3.10 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_16    | alw/outvalid_reg_17                              |               10 |             31 |         3.10 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_15    | alw/outvalid_reg_16                              |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_14    | alw/outvalid_reg_15                              |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_4     | alw/controlReg_reg[0]_4                          |               13 |             31 |         2.38 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_9     | alw/controlReg_reg[0]_9                          |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l3/n_0/mult_valid_reg_3     | alw/controlReg_reg[0]_33                         |               10 |             31 |         3.10 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_22    | alw/controlReg_reg[0]_22                         |               10 |             31 |         3.10 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_19    | alw/controlReg_reg[0]_19                         |               11 |             31 |         2.82 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_16    | alw/controlReg_reg[0]_16                         |               11 |             31 |         2.82 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_15    | alw/controlReg_reg[0]_15                         |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_14    | alw/controlReg_reg[0]_14                         |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_1     | alw/controlReg_reg[0]_1                          |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l3/n_0/p_0_in               | alw/controlReg_reg[0]_29[0]                      |               10 |             31 |         3.10 |
+|  s_axi_aclk_IBUF_BUFG | l3/n_0/mult_valid_reg_6     | alw/controlReg_reg[0]_36                         |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l3/n_0/mult_valid_reg_5     | alw/controlReg_reg[0]_35                         |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_24    | alw/controlReg_reg[0]_24                         |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_9     | alw/outvalid_reg_10                              |               11 |             31 |         2.82 |
+|  s_axi_aclk_IBUF_BUFG | l3/n_0/mult_valid_reg_1     | alw/controlReg_reg[0]_31                         |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l4/n_0/mult_valid_reg_8     | alw/controlReg_reg[0]_48                         |                8 |             31 |         3.88 |
+|  s_axi_aclk_IBUF_BUFG | l4/n_0/mult_valid_reg_7     | alw/controlReg_reg[0]_47                         |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/p_0_in               | alw/SR[0]                                        |               10 |             31 |         3.10 |
+|  s_axi_aclk_IBUF_BUFG | l4/n_0/mult_valid_reg_1     | alw/controlReg_reg[0]_41                         |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_27    | alw/controlReg_reg[0]_27                         |                9 |             31 |         3.44 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_7[0]  | alw/outvalid_reg_8                               |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_0[0]  | alw/controlReg_reg[0]_0[0]                       |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_5[0]  | alw/controlReg_reg[0]_5[0]                       |               10 |             32 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_3[0]  | alw/controlReg_reg[0]_3[0]                       |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_26[0] | alw/controlReg_reg[0]_26[0]                      |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_25[0] | alw/controlReg_reg[0]_25[0]                      |               13 |             32 |         2.46 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_23[0] | alw/controlReg_reg[0]_23[0]                      |               13 |             32 |         2.46 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_21[0] | alw/controlReg_reg[0]_21[0]                      |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_20[0] | alw/controlReg_reg[0]_20[0]                      |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_2[0]  | alw/controlReg_reg[0]_2[0]                       |               10 |             32 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_18[0] | alw/controlReg_reg[0]_18[0]                      |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_17[0] | alw/controlReg_reg[0]_17[0]                      |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_13[0] | alw/controlReg_reg[0]_13[0]                      |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_11[0] | alw/controlReg_reg[0]_11[0]                      |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_10[0] | alw/controlReg_reg[0]_10[0]                      |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_12[0] | alw/controlReg_reg[0]_12[0]                      |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | mFind/maxValue              | l4/n_0/outvalid_reg_0                            |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG |                             | alw/count_3                                      |                8 |             32 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_3[0]  | alw/outvalid_reg_4                               |               15 |             32 |         2.13 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_27[0] | alw/outvalid_reg_28                              |               10 |             32 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_25[0] | alw/outvalid_reg_26                              |               10 |             32 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_24[0] | alw/outvalid_reg_25                              |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_22[0] | alw/outvalid_reg_23                              |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_20[0] | alw/outvalid_reg_21                              |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_23[0] | alw/outvalid_reg_24                              |                9 |             32 |         3.56 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_11[0] | alw/outvalid_reg_12                              |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/E[0]                 | alw/outvalid_reg_3                               |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/p_0_in               | alw/outvalid_reg[0]                              |               13 |             32 |         2.46 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_8[0]  | alw/outvalid_reg_9                               |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/mult_valid_reg_4[0]  | alw/outvalid_reg_5                               |               10 |             32 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_7[0]  | alw/controlReg_reg[0]_7[0]                       |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | mFind/E[0]                  | alw/axi_wready_i_1_n_30                          |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | mFind/counter               | l4/n_0/outvalid_reg_0                            |               10 |             32 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG | alw/weightReg               | alw/axi_wready_i_1_n_30                          |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | alw/slv_reg_rden            | alw/axi_wready_i_1_n_30                          |               16 |             32 |         2.00 |
+|  s_axi_aclk_IBUF_BUFG | alw/neuronReg               | alw/axi_wready_i_1_n_30                          |               10 |             32 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG | alw/layerReg                | alw/axi_wready_i_1_n_30                          |                7 |             32 |         4.57 |
+|  s_axi_aclk_IBUF_BUFG | alw/controlReg              | alw/axi_wready_i_1_n_30                          |                8 |             32 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG | alw/biasReg                 | alw/axi_wready_i_1_n_30                          |                7 |             32 |         4.57 |
+|  s_axi_aclk_IBUF_BUFG |                             | alw/count_1                                      |                8 |             32 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG | l4/n_0/mult_valid_reg_6[0]  | alw/controlReg_reg[0]_46[0]                      |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l4/n_0/mult_valid_reg_5[0]  | alw/controlReg_reg[0]_45[0]                      |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l4/n_0/mult_valid_reg_3[0]  | alw/controlReg_reg[0]_43[0]                      |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l4/n_0/mult_valid_reg_2[0]  | alw/controlReg_reg[0]_42[0]                      |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | l4/n_0/mult_valid_reg_0[0]  | alw/controlReg_reg[0]_40[0]                      |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_6[0]  | alw/controlReg_reg[0]_6[0]                       |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/mult_valid_reg_8[0]  | alw/controlReg_reg[0]_8[0]                       |               15 |             32 |         2.13 |
+|  s_axi_aclk_IBUF_BUFG |                             | alw/count_2                                      |                8 |             32 |         4.00 |
+|  s_axi_aclk_IBUF_BUFG | l3/n_0/mult_valid_reg_0[0]  | alw/controlReg_reg[0]_30[0]                      |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | l3/n_0/mult_valid_reg_7[0]  | alw/controlReg_reg[0]_37[0]                      |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l3/n_0/mult_valid_reg_2[0]  | alw/controlReg_reg[0]_32[0]                      |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | l3/n_0/mult_valid_reg_4[0]  | alw/controlReg_reg[0]_34[0]                      |               10 |             32 |         3.20 |
+|  s_axi_aclk_IBUF_BUFG | l3/n_0/mult_valid_reg_8[0]  | alw/controlReg_reg[0]_38[0]                      |                9 |             32 |         3.56 |
+|  s_axi_aclk_IBUF_BUFG | l4/n_0/p_0_in               | alw/controlReg_reg[0]_39[0]                      |               12 |             32 |         2.67 |
+|  s_axi_aclk_IBUF_BUFG | l4/n_0/mult_valid_reg_4[0]  | alw/controlReg_reg[0]_44[0]                      |               11 |             32 |         2.91 |
+|  s_axi_aclk_IBUF_BUFG | alw/axi_rd_en_reg_0         |                                                  |               27 |            144 |         5.33 |
+|  s_axi_aclk_IBUF_BUFG |                             |                                                  |              114 |            150 |         1.32 |
+|  s_axi_aclk_IBUF_BUFG | l4/n_0/outvalid_reg_0       |                                                  |               48 |            160 |         3.33 |
+|  s_axi_aclk_IBUF_BUFG | l3/n_0/holdData_3           |                                                  |               49 |            168 |         3.43 |
+|  s_axi_aclk_IBUF_BUFG | l2/n_0/holdData_2           |                                                  |              112 |            488 |         4.36 |
+|  s_axi_aclk_IBUF_BUFG | l1/n_0/holdData_1           |                                                  |              154 |            563 |         3.66 |
++-----------------------+-----------------------------+--------------------------------------------------+------------------+----------------+--------------+
+
+

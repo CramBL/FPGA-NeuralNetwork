@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.2.2 (64-bit)
+# SW Build 3788238 on Tue Feb 21 19:59:23 MST 2023
+# IP Build 3783773 on Tue Feb 21 23:41:56 MST 2023
+# Start of session at: Thu Apr 13 17:36:12 2023
+# Process ID: 1842251
+# Current directory: /home/mkonig/project_1/myProject1/myProject1.runs/impl_1
+# Command line: vivado -log zyNet.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source zyNet.tcl -notrace
+# Log file: /home/mkonig/project_1/myProject1/myProject1.runs/impl_1/zyNet.vdi
+# Journal file: /home/mkonig/project_1/myProject1/myProject1.runs/impl_1/vivado.jou
+# Running On: pc014mk, OS: Linux, CPU Frequency: 4217.935 MHz, CPU Physical cores: 6, Host memory: 16185 MB
+#-----------------------------------------------------------
+source zyNet.tcl -notrace
