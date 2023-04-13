@@ -59,41 +59,41 @@ def gen_layer(layerNum, numNeurons, actType):
             layer_data = g.read()
             f.write(
                 f'module Layer_{layerNum} \
-                    #(parameter NN = 30, \
-                    # numWeight=784, \
-                    # dataWidth=16, \
-                    # layerNum=1, \
-                    # sigmoidSize=10, \
-                    # weightIntWidth=4, \
-                    # actType="relu")\n'
+#(parameter NN = 30, \
+numWeight=784, \
+dataWidth=16, \
+layerNum=1, \
+sigmoidSize=10, \
+weightIntWidth=4, \
+actType="relu")\n'
             )
             f.write(layer_data)
 
             for i in range(numNeurons):
                 f.write(
                     f'\nneuron #(.numWeight(numWeight),\
-                    .layerNo(layerNum),\
-                    .neuronNo({i}),\
-                    .dataWidth(dataWidth),\
-                    .sigmoidSize(sigmoidSize),\
-                    .weightIntWidth(weightIntWidth),\
-                    .actType(actType),\
-                    .weightFile("w_{layerNum}_{i}.mif"),\
-                    .biasFile("b_{layerNum}_{i}.mif"))\
-                        n_{i}(\n\
-                .clk(clk),\n\
-                .rst(rst),\n\
-                .myinput(x_in),\n\
-                .weightValid(weightValid),\n\
-                .biasValid(biasValid),\n\
-                .weightValue(weightValue),\n\
-                .biasValue(biasValue),\n\
-                .config_layer_num(config_layer_num),\n\
-                .config_neuron_num(config_neuron_num),\n\
-                .myinputValid(x_valid),\n\
-                .out(x_out[{i}*dataWidth+:dataWidth]),\n\
-                .outvalid(o_valid[{i}])\n\
-                );'
+.layerNo(layerNum),\
+.neuronNo({i}),\
+.dataWidth(dataWidth),\
+.sigmoidSize(sigmoidSize),\
+.weightIntWidth(weightIntWidth),\
+.actType(actType),\
+.weightFile("w_{layerNum}_{i}.mif"),\
+.biasFile("b_{layerNum}_{i}.mif"))\
+n_{i}(\n\
+            .clk(clk),\n\
+            .rst(rst),\n\
+            .myinput(x_in),\n\
+            .weightValid(weightValid),\n\
+            .biasValid(biasValid),\n\
+            .weightValue(weightValue),\n\
+            .biasValue(biasValue),\n\
+            .config_layer_num(config_layer_num),\n\
+            .config_neuron_num(config_neuron_num),\n\
+            .myinputValid(x_valid),\n\
+            .out(x_out[{i}*dataWidth+:dataWidth]),\n\
+            .outvalid(o_valid[{i}])\n\
+            );'
                 )
             f.write("\nendmodule")
 
@@ -155,21 +155,18 @@ def gen_nn(
             data = g.read()
             f.write(data)
 
-        f.write(
-            """localparam IDLE = 'd0,
-            SEND = 'd1;\n"""
-        )
+        f.write("""localparam IDLE = 'd0, SEND = 'd1;\n""")
         # Instantiate the layers
         for i in range(1, numLayers):
             if layers[i].type == "Dense" and layers[i].activation != "hardmax":
                 f.write(f"wire [`numNeuronLayer{i}-1:0] o{i}_valid;\n")
                 f.write(
-                    f"wire [`numNeuronLayer{i}\
-                    *`dataWidth-1:0] x{i}_out;\n"
+                    f"wire [`numNeuronLayer{i}*`dataWidth-1:0] x{i}_out;\
+\n"
                 )
                 f.write(
-                    f"reg [`numNeuronLayer{i}\
-                    *`dataWidth-1:0] holdData_{i};\n"
+                    f"reg [`numNeuronLayer{i}*`dataWidth-1:0] holdData_{i};\
+\n"
                 )
                 f.write(f"reg [`dataWidth-1:0] out_data_{i};\n")
                 f.write(f"reg data_out_valid_{i};\n\n")
@@ -197,24 +194,24 @@ def gen_nn(
                 else:  # All other layers
                     f.write(
                         f"Layer_{i} \
-                            #(.NN(`numNeuronLayer{i}),\
-                            # .numWeight(`numWeightLayer{i}),\
-                            # .dataWidth(`dataWidth),.layerNum({i}),\
-                            # .sigmoidSize(`sigmoidSize),\
-                            # .weightIntWidth(`weightIntWidth),\
-                            # .actType(`Layer{i}ActType)) \
-                            # l{i}(\n\t.clk(s_axi_aclk),\n\t\
-                            # .rst(reset),\n\t\
-                            # .weightValid(weightValid),\n\t\
-                            # .biasValid(biasValid),\n\t\
-                            # .weightValue(weightValue),\n\t.\
-                            # biasValue(biasValue),\n\t\
-                            # .config_layer_num(config_layer_num),\n\t\
-                            # .config_neuron_num(config_neuron_num),\n\t\
-                            # .x_valid(data_out_valid_{i - 1}),\n\t\
-                            # .x_in(out_data_{i - 1}),\n\t\
-                            # .o_valid(o{i}_valid),\n\t\
-                            # .x_out(x{i}_out)\n);\n\n"
+#(.NN(`numNeuronLayer{i}),\
+.numWeight(`numWeightLayer{i}),\
+.dataWidth(`dataWidth),.layerNum({i}),\
+.sigmoidSize(`sigmoidSize),\
+.weightIntWidth(`weightIntWidth),\
+.actType(`Layer{i}ActType)) \
+l{i}(\n\t.clk(s_axi_aclk),\n\t\
+.rst(reset),\n\t\
+.weightValid(weightValid),\n\t\
+.biasValid(biasValid),\n\t\
+.weightValue(weightValue),\n\t.\
+biasValue(biasValue),\n\t\
+.config_layer_num(config_layer_num),\n\t\
+.config_neuron_num(config_neuron_num),\n\t\
+.x_valid(data_out_valid_{i - 1}),\n\t\
+.x_in(out_data_{i - 1}),\n\t\
+.o_valid(o{i}_valid),\n\t\
+.x_out(x{i}_out)\n);\n\n"
                     )
 
                 if layers[i].activation != "hardmax":
@@ -224,38 +221,38 @@ def gen_nn(
                     f.write("always @(posedge s_axi_aclk)\n")
                     f.write(
                         f"begin\n\
-        if(reset)\n\
-        begin\n\
-            state_{i} <= IDLE;\n\
-            count_{i} <= 0;\n\
-            data_out_valid_{i} <=0;\n\
-        end\n\
-        else\n\
-        begin\n\
-            case(state_{i})\n\
-                IDLE: begin\n\
-                    count_{i} <= 0;\n\
-                    data_out_valid_{i} <=0;\n\
-                    if (o{i}_valid[0] == 1'b1)\n\
-                    begin\n\
-                        holdData_{i} <= x{i}_out;\n\
-                        state_{i} <= SEND;\n\
-                    end\n\
+    if(reset)\n\
+    begin\n\
+        state_{i} <= IDLE;\n\
+        count_{i} <= 0;\n\
+        data_out_valid_{i} <=0;\n\
+    end\n\
+    else\n\
+    begin\n\
+        case(state_{i})\n\
+            IDLE: begin\n\
+                count_{i} <= 0;\n\
+                data_out_valid_{i} <=0;\n\
+                if (o{i}_valid[0] == 1'b1)\n\
+                begin\n\
+                    holdData_{i} <= x{i}_out;\n\
+                    state_{i} <= SEND;\n\
                 end\n\
-                SEND: begin\n\
-                    out_data_{i} <= holdData_{i}[`dataWidth-1:0];\n\
-                    holdData_{i} <= holdData_{i}>>`dataWidth;\n\
-                    count_{i} <= count_{i} +1;\n\
-                    data_out_valid_{i} <= 1;\n\
-                    if (count_{i} == `numNeuronLayer{i})\n\
-                    begin\n\
-                        state_{i} <= IDLE;\n\
-                        data_out_valid_{i} <= 0;\n\
-                    end\n\
+            end\n\
+            SEND: begin\n\
+                out_data_{i} <= holdData_{i}[`dataWidth-1:0];\n\
+                holdData_{i} <= holdData_{i}>>`dataWidth;\n\
+                count_{i} <= count_{i} +1;\n\
+                data_out_valid_{i} <= 1;\n\
+                if (count_{i} == `numNeuronLayer{i})\n\
+                begin\n\
+                    state_{i} <= IDLE;\n\
+                    data_out_valid_{i} <= 0;\n\
                 end\n\
-            endcase\n\
-        end\n\
-    end\n\n"
+            end\n\
+        endcase\n\
+    end\n\
+end\n\n"
                     )
             elif layers[i].activation == "hardmax":
                 copyfile(
@@ -264,34 +261,34 @@ def gen_nn(
                 )
                 f.write(
                     f"reg [`numNeuronLayer{i - 1}*\
-                    `dataWidth-1:0] holdData_{i};\n"
+`dataWidth-1:0] holdData_{i};\n"
                 )
                 f.write(
                     f"assign axi_rd_data = holdData_{i}\
-                    [`dataWidth-1:0];\n\n"
+[`dataWidth-1:0];\n\n"
                 )
                 f.write(
                     f"always @(posedge s_axi_aclk)\n\
+    begin\n\
+        if (o{i - 1}_valid[0] == 1'b1)\n\
+            holdData_{i} <= x{i - 1}_out;\n\
+        else if(axi_rd_en)\n\
         begin\n\
-            if (o{i - 1}_valid[0] == 1'b1)\n\
-                holdData_{i} <= x{i - 1}_out;\n\
-            else if(axi_rd_en)\n\
-            begin\n\
-                holdData_{i} <= holdData_{i}>>`dataWidth;\n\
-            end\n\
-        end\n\n\n"
+            holdData_{i} <= holdData_{i}>>`dataWidth;\n\
+        end\n\
+    end\n\n\n"
                 )
 
                 f.write(
                     f"maxFinder #(.numInput(`numNeuronLayer{i - 1}),\
-                    .inputWidth(`dataWidth))\n\
-        mFind(\n\
-            .i_clk(s_axi_aclk),\n\
-            .i_data(x{i - 1}_out),\n\
-            .i_valid(o{i - 1}_valid),\n\
-            .o_data(out),\n\
-            .o_data_valid(out_valid)\n\
-        );\n"
+.inputWidth(`dataWidth))\n\
+    mFind(\n\
+        .i_clk(s_axi_aclk),\n\
+        .i_data(x{i - 1}_out),\n\
+        .i_valid(o{i - 1}_valid),\n\
+        .o_data(out),\n\
+        .o_data_valid(out_valid)\n\
+    );\n"
                 )
 
         f.write("endmodule")
