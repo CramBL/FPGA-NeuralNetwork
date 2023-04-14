@@ -43,6 +43,9 @@ def write_include_file(
         path.join(path.dirname(__file__), "db/relu.v"), SOURCE_FILE_PATH + "relu.v"
     )
     copyfile(
+        path.join(path.dirname(__file__), "db/relu.vhd"), SOURCE_FILE_PATH + "relu.vhd"
+    )
+    copyfile(
         path.join(path.dirname(__file__), "db/Sig_ROM.v"),
         SOURCE_FILE_PATH + "Sig_ROM.v",
     )
