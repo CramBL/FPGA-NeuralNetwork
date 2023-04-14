@@ -25,7 +25,7 @@ begin
     begin
         if rising_edge(clk) then
             if signed(x) >= 0 then
-                if or(x(2*dataWidth-1 downto (2*dataWidth - weightIntWidth))) then -- overflow to sign bit of integer part
+                if or(x(2*dataWidth-1 downto (2*dataWidth - (weightIntWidth + 1)))) then -- overflow to sign bit of integer part
                     y_out <= ('0' & (dataWidth-2 downto 0 => '1')); -- Maximum value unsigned integer
                 else
                     y_out <= x(2*dataWidth-1-weightIntWidth downto dataWidth-weightIntWidth);
