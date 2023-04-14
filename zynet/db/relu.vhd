@@ -1,9 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-use IEEE.STD_LOGIC_MISC.ALL;
-
-
 
 entity ReLU_VHDL is
     generic (
@@ -18,10 +15,8 @@ entity ReLU_VHDL is
 end entity ReLU_VHDL;
 
 architecture Behavioral of ReLU_VHDL is
-constant all_ones : std_logic_vector(x(2*dataWidth-1 downto weightIntWidth)'range) := (others => '1');
 begin
     process (clk)
-        --variable all_ones : std_logic_vector(2*dataWidth-1 downto 0);
     begin
         if rising_edge(clk) then
             if signed(x) >= 0 then
