@@ -41,6 +41,14 @@ if __name__ == "__main__":
     args = parser.parse_args()
     print(f"Neuron type: {args.neuron}")
 
+    if (
+        args.neuron != "relu"
+        and args.neuron != "sigmoid"
+        and args.neuron != "relu-vhdl"
+    ):
+        print("Neuron type must be relu, sigmoid, or relu-vhdl")
+        exit(1)
+
     generate_mnist_zynet(
         data_width=16,
         sigmoid_size=5,
