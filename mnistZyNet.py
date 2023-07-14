@@ -49,6 +49,11 @@ if __name__ == "__main__":
     ):
         print("Neuron type must be relu, sigmoid, or relu-vhdl")
         exit(1)
+    if args.neuron == "sigmoid-vhdl":
+        print("Unfortunately Vivado lacks good support for VHDL I/O...")
+        print("Maybe it has better support now? You can try to fix this if you know what you're doing")
+        print("exiting...")
+        exit(1)
 
     generate_mnist_zynet(
         data_width=16,
