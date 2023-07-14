@@ -192,6 +192,14 @@ module neuron #(parameter layerNo=0,neuronNo=0,numWeight=784,dataWidth=16,sigmoi
 			.y_out(out)
             );
         end
+        else if (actType == "sigmoid-vhdl")
+		begin :sig_vhdl_inst
+			Sig_ROM_VHDL #(.dataWidth(dataWidth),.weightIntWidth(weightIntWidth)) s1 (
+			.clk(clk),
+			.x(sum[2*dataWidth-1-:sigmoidSize]),
+			.y_out(out)
+            );
+        end
 		else
 		begin:ReLUinst
 			ReLU #(.dataWidth(dataWidth),.weightIntWidth(weightIntWidth)) s1 (
