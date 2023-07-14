@@ -45,6 +45,7 @@ if __name__ == "__main__":
         args.neuron != "relu"
         and args.neuron != "sigmoid"
         and args.neuron != "relu-vhdl"
+        and args.neuron != "sigmoid-vhdl"
     ):
         print("Neuron type must be relu, sigmoid, or relu-vhdl")
         exit(1)

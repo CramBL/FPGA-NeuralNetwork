@@ -50,6 +50,10 @@ def write_include_file(
         SOURCE_FILE_PATH + "Sig_ROM.v",
     )
     copyfile(
+        path.join(path.dirname(__file__), "db/Sig_ROM.vhd"),
+        SOURCE_FILE_PATH + "Sig_ROM.vhd",
+    )
+    copyfile(
         path.join(path.dirname(__file__), "db/Weight_Memory.v"),
         SOURCE_FILE_PATH + "Weight_Memory.v",
     )
