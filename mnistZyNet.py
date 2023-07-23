@@ -69,6 +69,9 @@ if __name__ == "__main__":
         print("exiting...")
         exit(1)
 
+    if args.sigmoid_size > 10:
+        print("WARNING - Sigmoid size larger than 10 might fail to synthesize")
+
     generate_mnist_zynet(
         data_width=16,
         sigmoid_size=args.sigmoid_size,
