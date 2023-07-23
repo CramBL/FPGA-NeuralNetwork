@@ -21,7 +21,7 @@
 
 `include "include.v"
 
-`define MaxTestSamples 200
+`define MaxTestSamples 1000
 
 module top_sim(
 
