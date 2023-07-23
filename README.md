@@ -8,5 +8,8 @@ $ python mnistZyNet.py --help
 ```
 
 
-## Example performance (TODO)
+## Example performance
 
+
+
+![sigsize-vs-accuracy](plots/sig-size-acc.svg)
