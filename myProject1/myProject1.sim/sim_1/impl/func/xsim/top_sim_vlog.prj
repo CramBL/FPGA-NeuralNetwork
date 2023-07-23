@@ -1,7 +1,0 @@
-# compile verilog/system verilog design source files
-verilog xil_defaultlib  --include "../../../../../../src/fpga/rtl" \
-"top_sim_func_impl.v" \
-"../../../../../../src/fpga/tb/top_sim.v" \
-
-# Do not sort compile order
-nosort
