@@ -19,8 +19,13 @@ def generate_mnist_zynet(
     model.add(zynet.layer("Dense", 10, neuron_type))
     model.add(zynet.layer("Dense", 10, neuron_type))
     model.add(zynet.layer("Dense", 10, "hardmax"))
-    weight_array = utils.genWeightArray("WeigntsAndBiasesReLuNew.txt")
-    bias_array = utils.genBiasArray("WeigntsAndBiasesReLuNew.txt")
+
+    neuron_file = "Sigmoid" # default
+    if neuron_type == "relu" or neuron_type == "relu-vhdl":
+        neuron_file = "ReLu"
+
+    weight_array = utils.genWeightArray("WeigntsAndBiases"+neuron_file+"New.txt")
+    bias_array = utils.genBiasArray("WeigntsAndBiases"+neuron_file+"New.txt")
     model.compile(
         pretrained="Yes",
         weights=weight_array,
@@ -30,15 +35,24 @@ def generate_mnist_zynet(
         inputIntSize=input_int_size,
         sigmoidSize=sigmoid_size,
     )
-    # zynet.makeXilinxProject('myProject1','xc7z020clg484-1')
-    # zynet.makeIP('myProject1')
-    # zynet.makeSystem('myProject1','myBlock2')
+
+    if args.make_project is True:
+        print("Creating vivado project files as MyZyNetProject")
+        zynet.makeXilinxProject('MyZyNetProject','xc7z020clg484-1')
+        zynet.makeIP('MyZyNetProject')
+        zynet.makeSystem('MyZyNetProject','myBlock2')
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(prog='ZyNet')
     parser.add_argument("-n", "--neuron", type=str)
+    parser.add_argument("-s", "--sigmoid-size", type=int)
+    parser.add_argument("-m", "--make-project", action='store_true')
+
+
     args = parser.parse_args()
+
+
     print(f"Neuron type: {args.neuron}")
 
     if (
@@ -57,7 +71,7 @@ if __name__ == "__main__":
 
     generate_mnist_zynet(
         data_width=16,
-        sigmoid_size=5,
+        sigmoid_size=args.sigmoid_size,
         weight_int_size=4,
         input_int_size=1,
         neuron_type=args.neuron,
