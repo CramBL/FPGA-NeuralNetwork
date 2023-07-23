@@ -69,12 +69,15 @@ if __name__ == "__main__":
         print("exiting...")
         exit(1)
 
-    if args.sigmoid_size > 10:
+    sigmoid_size = args.sigmoid_size
+    if sigmoid_size is None:
+        sigmoid_size = 5 # default
+    if sigmoid_size > 10:
         print("WARNING - Sigmoid size larger than 10 might fail to synthesize")
 
     generate_mnist_zynet(
-        data_width=16,
-        sigmoid_size=args.sigmoid_size,
+        data_width=16, # Default 16
+        sigmoid_size=sigmoid_size,
         weight_int_size=4,
         input_int_size=1,
         neuron_type=args.neuron,
