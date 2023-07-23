@@ -9,7 +9,7 @@ $ python mnistZyNet.py --help
 
 
 ## Example performance
-Sigmoid size is the width in bits of the values in the LUT for the sigmoid function.
+Sigmoid size is the width in bits of the values in the LUT for the sigmoid function, meaning how many steps the sigmoid function is divided into. More bits means smaller steps, means smaller disparity between the discretized value and the actual value of the function.
 
 | Sigmoid Size [bits] | 2   | 3   | 4    | 5    | 6    | 7   | 8    | 9    | 10   |
 | ------------------- | --- | --- | ---- | ---- | ---- | --- | ---- | ---- | ---- |
