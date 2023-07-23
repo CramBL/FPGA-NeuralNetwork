@@ -1,4 +1,5 @@
 /myProject1/*
 zynet/__pycache__/
 src/fpga/rtl/
+src/fpga/tb/
 myProject1/myProject1.sim/sim_1/behav/xsim/
