@@ -1,20 +1,20 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-SIGMOID_SIZE = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+SIGMOID_SIZE_BITS = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 SIGMOID_ACCURACY = [8.5, 8.5, 11.6, 94.1, 94.5, 95.0, 95.1, 95.1, 95.1]
 
 
 if __name__ == "__main__":
     # Data for plotting
-    x = SIGMOID_SIZE
+    x = SIGMOID_SIZE_BITS
     y = SIGMOID_ACCURACY
 
     
 
     fig, ax = plt.subplots(figsize=(12, 6.75))
 
-    ax.set(xlabel='Sigmoid size', ylabel='Accuracy [%]',
+    ax.set(xlabel='Sigmoid size [bits]', ylabel='Accuracy [%]',
         title='Sigmoid size vs. Accuracy (1000 predictions)')
     ax.grid()
     plt.plot(x, y, marker='o', linestyle='dashed')  
