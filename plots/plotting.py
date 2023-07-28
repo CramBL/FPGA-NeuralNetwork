@@ -24,6 +24,9 @@ if __name__ == "__main__":
     ax.set_xlabel("Sigmoid size [bits]", fontsize=16)
     ax.set_ylabel("Accuracy [%]", fontsize=16)
 
+    plt.axhline(y=88.7, color='r', linestyle='-')
+    plt.text(3.2, 90, 'ReLU: 88.7%', ha='left', va='center')
+
     # Remove white space around the figure
     plt.tight_layout()
 
